@@ -174,7 +174,7 @@ class EditAddressScreen extends StatelessWidget {
           ),
           bottomNavigationBar: GestureDetector(
             onTap: () {
-              Get.to(() =>  ConfirmationScreen());
+              Get.to(() => ConfirmationScreen());
             },
             child: Container(
               height: size.height / 12,
@@ -204,25 +204,25 @@ class EditAddressScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              "Name",
-              style: TextStyle(
+            Text(
+              controller.name,
+              style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 10),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
               child: Text(
-                "Email",
-                style: TextStyle(
+                controller.email,
+                style: const TextStyle(
                   fontSize: 20,
                 ),
               ),
             ),
-            const Text(
-              "Address",
-              style: TextStyle(
+            Text(
+              controller.address,
+              style: const TextStyle(
                 fontSize: 17,
                 fontWeight: FontWeight.w400,
               ),
@@ -231,7 +231,9 @@ class EditAddressScreen extends StatelessWidget {
               height: size.height / 30,
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                controller.onEdit();
+              },
               child: Container(
                 height: size.height / 18,
                 width: size.width / 1.2,

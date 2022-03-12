@@ -1,6 +1,7 @@
 import 'package:alert/alert.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:mypoll2/const/const.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AddressScreenController extends GetxController {
@@ -35,8 +36,16 @@ class AddressScreenController extends GetxController {
 
       getInstance();
     } else {
-      Alert(message: "All fields are Required", shortDuration: false);
+      showAlert("hey! All fields are required....");
+      // Alert(message: "All fields are required", shortDuration: false);
     }
+  }
+
+  void onEdit() async {
+    isAddressAvailable = false;
+
+    await _preferences.clear();
+    update();
   }
 
   Future<void> saveString(String key, String value) async {

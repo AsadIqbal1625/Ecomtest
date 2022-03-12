@@ -42,6 +42,12 @@ dependencies:
   alert: ^2.0.1
   cloud_firestore: ^3.1.8
   shared_preferences: ^2.0.13
+  fluttertoast: ^8.0.9
+  razorpay_flutter: ^1.2.9
+  razorpay_web:
+  
+
+  
 
 
 dev_dependencies:

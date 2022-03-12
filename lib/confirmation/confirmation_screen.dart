@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mypoll2/confirmation/confirmation_screen_controller.dart';
 
 class ConfirmationScreen extends StatelessWidget {
-  const ConfirmationScreen({Key? key}) : super(key: key);
+  ConfirmationScreen({Key? key}) : super(key: key);
 
+  final controller = Get.put(ConfirmationScreenController());
   @override
   Widget build(BuildContext context) {
     final size = Get.size;
@@ -32,7 +34,9 @@ class ConfirmationScreen extends StatelessWidget {
             ),
           ),
           bottomNavigationBar: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              controller.onPay();
+            },
             child: Container(
               height: size.height / 12,
               width: size.width / 1.2,
@@ -60,26 +64,26 @@ class ConfirmationScreen extends StatelessWidget {
         width: size.width / 1.2,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
+          children: [
             Text(
-              "Name",
-              style: TextStyle(
+              controller.name,
+              style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 10),
+              padding: const EdgeInsets.symmetric(vertical: 10),
               child: Text(
-                "Email",
-                style: TextStyle(
+                controller.email,
+                style: const TextStyle(
                   fontSize: 20,
                 ),
               ),
             ),
             Text(
-              "Address",
-              style: TextStyle(
+              controller.address,
+              style: const TextStyle(
                 fontSize: 17,
                 fontWeight: FontWeight.w400,
               ),
@@ -125,9 +129,9 @@ class ConfirmationScreen extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 15),
-              child: text('Total Price :', '100AED'),
+              child: text('Total Price :', '${controller.totalPrice} AED'),
             ),
-            text('Discount :', '10AED'),
+            text('Discount :', '${controller.totalDiscount}AED'),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 15),
               child: text('Coupan  :', 'wqw2o3nej8872h'),
